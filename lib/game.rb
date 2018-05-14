@@ -18,8 +18,8 @@ class Game
     @pc_weapon = pc_weapon
     puts "Computer weapon is : #{@pc_weapon}"
   end
-# test looking for Draw all the time! do not know why!
-# program works good. Deleting first 'if' statement test looks fine!
+# test looking for Draw all the time! I do not know why!
+# program works good. Deleting first 'if' statement, test looks fine!
   def result
     if @player == @pc_weapon
       puts 'Is a Draw'
@@ -33,7 +33,7 @@ class Game
   end
 
   def pc_weapon
-    @pc.sample
+    @pc[rand(3)]
   end
 
   def player
