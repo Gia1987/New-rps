@@ -2,6 +2,9 @@ require'game'
 
 describe Game do
 
+  # never stub the subject!
+
+
   describe'#ask_user' do
     it 'asks user to pick up a weapon' do
       #assert
@@ -21,7 +24,7 @@ describe Game do
   describe '#pc_move' do
     it' define random pc weapon' do
       #arrange
-      allow(subject).to receive(:pc_weapon) { 'r' }
+      srand(0)
       #assert
       expect{subject.pc_move}.to output("Computer weapon is : r\n").to_stdout
     end
@@ -30,8 +33,10 @@ describe Game do
   describe'#result' do
     it'gives us the result of the battle' do
       #arrange
+      srand(0)
+      subject.pc_move
       allow(subject).to receive(:gets) { 'p' }
-      allow(subject).to receive(:pc_weapon) { 'r' }
+      subject.input_user
       #assert
       expect { subject.result }.to output("Player Won\n").to_stdout
     end
